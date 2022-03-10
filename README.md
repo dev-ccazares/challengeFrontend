@@ -1,7 +1,11 @@
-# Vue 3 + Vite
+# vite vue2 vuetify router
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+`Vite + Vue 2 + Vuex + Vue Router + Vuetify`
 
-## Recommended IDE Setup
-
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+## Start
+```bash
+npm install
+npm run dev # start dev server
+npm run  build # build for production
+npm run  serve # locally preview production build
+```
