@@ -9,16 +9,30 @@
     >
       <v-toolbar-title><v-icon  class="mr-2"> flight </v-icon>Vuelos encontrados</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon>
+      <v-btn icon text :to="{ name: 'Home' }" exact>
         <v-icon>search</v-icon>
       </v-btn>
     </v-toolbar>
 
-    <v-container fluid>
-      <v-row dense>
+    <v-container fluid >
+      <v-row dense class="grey lighten-5">
         <v-col
+          v-show="loading"
           v-for="card in cards"
           :key="card.title"
+          :md="4"
+          :cols="12"
+        >
+        <v-skeleton-loader
+          class="mx-auto"
+          type="card"
+        >
+        </v-skeleton-loader>
+        </v-col>
+        <v-col
+          v-show="!loading"
+          v-for="(card,i) in cards"
+          :key="i"
           :md="card.flex"
           :cols="12"
         >
@@ -70,14 +84,17 @@
 export default {
   name: 'Travels',
   data: () => ({
-      cards: [
-        { title: 'Pre-fab homes', src: 'https://cdn.vuetifyjs.com/images/cards/house.jpg', flex: 6,rating: 5, cash: 200, plane: 'Avianca', scales: 4, hour:'12:30'},
-        { title: 'Favorite road trips', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', flex: 3, rating: 4, cash: 200.00, plane: 'Avianca', scales: 4, hour:'12:30'},
-        { title: 'Best airlines', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 3, rating: 4.5, cash: 200.00, plane: 'Avianca', scales: 4, hour:'12:30'},
-        { title: 'Pre-fab homes', src: 'https://cdn.vuetifyjs.com/images/cards/house.jpg', flex: 4, rating: 3, cash: 200.00, plane: 'Avianca', scales: 4, hour:'12:30'},
-        { title: 'Favorite road trips', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', flex: 4, rating: 4, cash: 200.00, plane: 'Avianca', scales: 4, hour:'12:30'},
-        { title: 'Best airlines', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 4, rating: 5, cash: 200.00, plane: 'Avianca', scales: 4, hour:'12:30'},
-      ],
+      loading: true,
+      cards: [],
     }),
+  mounted() {
+    this.cards = this.$store.state.cards
+    this.load()
+  },
+  methods: {
+    load () {
+      setTimeout(() => this.loading = false, 1500);
+    },
+  },
 };
 </script>

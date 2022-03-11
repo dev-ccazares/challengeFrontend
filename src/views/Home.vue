@@ -186,6 +186,7 @@ export default {
         ],
       }
     },
+
   methods: {
     validate () {
       if(this.$refs.form.validate()){
@@ -195,8 +196,10 @@ export default {
           departureDate: this.departureDate,
           returnDate: this.returnDate
         } 
+         console.log(search)
+        this.$router.push('travels');
       }
-      console.log(search)
+     
     },
   },
 };
