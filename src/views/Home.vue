@@ -1,7 +1,7 @@
 <template>
 <v-container class="grey lighten-5">
   <v-row  align="center" dense>
-    <v-col md="8" cols="12" offset-md="2">
+    <v-col md="8" lg="12" xl="12" cols="12" offset-md="2" offset-lg="0" offset-xl="0">
     <v-card
       color="#024F77"
       dark
